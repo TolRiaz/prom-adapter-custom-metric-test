@@ -5,7 +5,7 @@ metadata:
   labels:
     app: hpa-test
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       app: hpa-test
@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: hpa-test
-        image: nginx:1.7.9
+        image: tolriaz/iperf:S
         ports:
         - containerPort: 80
 ---
@@ -36,4 +36,4 @@ spec:
   - type: Pods
     pods:
       metricName: network_utilization
-      targetAverageValue: 30000000
+      targetAverageValue: 2m

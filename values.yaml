@@ -54,7 +54,7 @@ rules:
     name:
       matches: "^(.*)"
       as: "network_utilization"
-    metricsQuery: (rate(container_network_receive_bytes_total[1m])+rate(container_network_transmit_bytes_total[1m]))
+    metricsQuery: (rate(container_network_receive_bytes_total[1m])+rate(container_network_transmit_bytes_total[1m]))/1000000/100 # Mega, mili
 #    metricsQuery: 'rate(<<.Series>>{<<.LabelMatchers>>}[1m])'
 #  custom: 
 #  - seriesQuery: '{__name__=~"^container_network_*_bytes_total$", container_name!="POD", namespace!="", pod_name!=""}'
