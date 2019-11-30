@@ -36,4 +36,4 @@ spec:
   - type: Pods
     pods:
       metricName: network_utilization
-      targetAverageValue: 2m
+      targetAverageValue: 2M
