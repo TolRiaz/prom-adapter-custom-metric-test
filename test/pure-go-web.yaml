@@ -4,21 +4,21 @@ metadata:
   annotations: 
     kubernetes.io/ingress-bandwidth: 10M
     kubernetes.io/egress-bandwidth: 10M
-  name: purge-go-web
+  name: pure-go-web
   labels:
-    app: purge-go-web
+    app: pure-go-web
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: purge-go-web
+      app: pure-go-web
   template:
     metadata:
       labels:
-        app: purge-go-web
+        app: pure-go-web
     spec:
       containers:
-      - name: purge-go-web
+      - name: pure-go-web
         image: jrlee/sample-web-server:0.1.0 
         args:
         - node
@@ -40,11 +40,11 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: purge-go-web-svc
+  name: pure-go-web-svc
 spec:
   type: NodePort
   selector:
-    app: purge-go-web
+    app: pure-go-web
   ports:
   - protocol: TCP
     port: 80
@@ -55,13 +55,13 @@ spec:
 apiVersion: autoscaling/v2beta1
 kind: HorizontalPodAutoscaler
 metadata:
-  name: purge-go-web
+  name: pure-go-web
   namespace: default
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: purge-go-web
+    name: pure-go-web
   minReplicas: 1
   maxReplicas: 10
   metrics:

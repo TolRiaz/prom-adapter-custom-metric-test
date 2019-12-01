@@ -43,14 +43,16 @@ kind: Service
 metadata:
   name: go-web-svc
 spec:
-  type: NodePort
+  type: LoadBalancer
   selector:
     app: go-web
   ports:
   - protocol: TCP
-    port: 80
+    port: 31080
     targetPort: 80
-    # nodePort: 32661
+#    nodePort: 32661       #
+  externalIPs:           #
+  - 220.149.13.193       #
   sessionAffinity: None
 ---
 apiVersion: autoscaling/v2beta1
