@@ -26,6 +26,12 @@ spec:
         - --port=80
         ports:
         - containerPort: 80
+#
+        resources:
+          requests:
+            memory: "256Mi"
+            cpu: "200m"
+#
         readinessProbe:
           httpGet:
             path: /
@@ -59,6 +65,10 @@ spec:
   minReplicas: 1
   maxReplicas: 10
   metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      targetAverageUtilization: 50
   - type: Pods
     pods:
       metricName: network_utilization
