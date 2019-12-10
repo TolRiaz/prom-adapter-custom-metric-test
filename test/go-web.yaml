@@ -35,6 +35,7 @@ spec:
           httpGet:
             path: /
             port: 80
+            
 ---
 apiVersion: autoscaling/v2beta1
 kind: HorizontalPodAutoscaler
